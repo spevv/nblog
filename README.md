@@ -1,6 +1,7 @@
-Nblog - node project, blog.
+**Nblog - node project, blog.**
 
 Basic skeleton API. We have basic CRUD operations on the following resources: users, categories, and posts.
+
 **Users**
 
     GET /users - fetch all users
