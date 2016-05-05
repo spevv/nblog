@@ -1,0 +1,19 @@
+extends ../layout
+block content
+    h1 Login
+    if(message.length > 0)
+        = message
+
+    form(action="/login", method="post")
+        label login
+        input(type="text" class="form-control" name="email")
+        br
+        label password
+        input(type="password" class="form-control" name="password")
+        br
+        button(type="submit" class="btn btn-warning btn-lg") Login
+
+
+    hr
+    <p>Need an account? <a href="/signup">Signup</a></p>
+    <p>Or go <a href="/">home</a>.</p>
