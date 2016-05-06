@@ -5,14 +5,13 @@ block content
         = message
 
     form(action="/login", method="post")
-        label login
+        label Email
         input(type="text" class="form-control" name="email")
         br
-        label password
+        label Password
         input(type="password" class="form-control" name="password")
         br
         button(type="submit" class="btn btn-warning btn-lg") Login
-
 
     hr
     <p>Need an account? <a href="/signup">Signup</a></p>

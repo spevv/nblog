@@ -1,3 +1,6 @@
+var bcrypt   = require('bcrypt-nodejs');
+
+
 var Bookshelf = require('../lib/connectMySQL');
 // User model
 var User = Bookshelf.Model.extend({
@@ -14,10 +17,6 @@ module.exports.users = Users;
 
 
 
-
-var bcrypt   = require('bcrypt-nodejs');
-
-
 // methods ======================
 // generating a hash
 module.exports.generateHash = function(password) {
@@ -25,8 +24,8 @@ module.exports.generateHash = function(password) {
 };
 
 // checking if password is valid
-module.exports.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password);
+module.exports.validPassword = function(password, userPassword) {
+     return bcrypt.compareSync(password, userPassword);
 };
 
 

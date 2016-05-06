@@ -1,9 +1,3 @@
-// TODO Create a passport auth
-// TODO registration
-// TODO frontend side
-
-// TODO edit lib/passport.js
-// TODO add password to DB
 // TODO create redirect on main pages
 
 var express = require('express');
