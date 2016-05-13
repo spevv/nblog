@@ -1,12 +1,12 @@
 var Bookshelf = require('../lib/connectMySQL');
-//var Post = require('./post');
+//var User = require('./user').user;
 
 // Permission model
 var Permission = Bookshelf.Model.extend({
-    tableName: 'permissions' /*,
-    posts: function () {
-        return this.belongsToMany(Post);
-    }*/
+    tableName: 'permissions',
+    user: function () {
+        return this.belongsToMany('User');
+    }
 });
 
 // Permission Collections

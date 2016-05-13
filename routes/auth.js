@@ -8,7 +8,7 @@ module.exports = function(app, passport) {
     // =====================================
 
     //user.can('access home page')
-    // permission.can('admin')
+    // permission.can('admin') // check to permission to user
     app.get('/', permission.can('admin'), function(req, res) {
         //res.render('index', { title: 'Express' });
         res.render('auth/index'); // load the index.ejs file

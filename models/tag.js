@@ -1,5 +1,5 @@
 var Bookshelf = require('../lib/connectMySQL');
-var Post = require('./post').post;
+//var Post = require('./post').post;
 
 // Tag model
 var Tag = Bookshelf.Model.extend({

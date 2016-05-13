@@ -1,8 +1,9 @@
 var Bookshelf = require('../lib/connectMySQL');
+/*
 var Category = require('./category').category;
-var Categories = require('./category').categories;
 var User = require('./user').user;
 var Tag = require('./tag').tag;
+*/
 
 // Post model
 var Post = Bookshelf.Model.extend({

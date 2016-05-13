@@ -4,7 +4,10 @@ var bcrypt   = require('bcrypt-nodejs');
 var Bookshelf = require('../lib/connectMySQL');
 // User model
 var User = Bookshelf.Model.extend({
-    tableName: 'users'
+    tableName: 'users',
+    permissions: function () {
+        return this.belongsToMany('Permission');
+    }
 });
 // Users Collections
 var Users = Bookshelf.Collection.extend({
@@ -27,26 +30,3 @@ module.exports.generateHash = function(password) {
 module.exports.validPassword = function(password, userPassword) {
      return bcrypt.compareSync(password, userPassword);
 };
-
-
-/*
-module.exports.findById = function(id, cb) {
-    User.forge({id: id})
-        .fetch()
-        .then(function (user) {
-            if (!user) {
-                return cb(true, null);
-                //res.status(404).json({error: true, data: {}});
-            }
-            else {
-                return cb(null, user);
-                //res.json({error: false, data: user.toJSON()});
-            }
-        })
-        .catch(function (err) {
-            return cb(err, null);
-           // res.status(500).json({error: true, data: {message: err.message}});
-        });
-};
-
-*/

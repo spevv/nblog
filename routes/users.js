@@ -4,12 +4,13 @@ var router = express.Router();
 var User = require('../models/user').user;
 var Users = require('../models/user').users;
 
+var Permission = require('../models/permission').permission;
 
 router.route('/users')
     // fetch all users
     .get(function (req, res) {
       Users.forge()
-          .fetch()
+          .fetch({withRelated: ['permissions']})
           .then(function (collection) {
             res.json({error: false, data: collection.toJSON()});
           })
@@ -35,7 +36,7 @@ router.route('/users/:id')
     // fetch user
     .get(function (req, res) {
       User.forge({id: req.params.id})
-          .fetch()
+          .fetch({withRelated: ['permissions']})
           .then(function (user) {
             if (!user) {
               res.status(404).json({error: true, data: {}});
