@@ -28,6 +28,15 @@ var Schema = {
         id: {type: 'increments', nullable: false, primary: true},
         post_id: {type: 'integer', nullable: false, unsigned: true},
         tag_id: {type: 'integer', nullable: false, unsigned: true}
+    },
+    permissions: {
+        id: {type: 'increments', nullable: false, primary: true},
+        name: {type: 'string', maxlength: 150, nullable: false}
+    },
+    permissions_users: {
+        id: {type: 'increments', nullable: false, primary: true},
+        user_id: {type: 'integer', nullable: false, unsigned: true},
+        permission_id: {type: 'integer', nullable: false, unsigned: true}
     }
 };
 

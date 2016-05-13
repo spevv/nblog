@@ -1,4 +1,5 @@
 // TODO create redirect on main pages
+// TODO create relation permission and user 
 
 var express = require('express');
 var path = require('path');

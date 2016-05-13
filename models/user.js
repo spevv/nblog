@@ -12,8 +12,8 @@ var Users = Bookshelf.Collection.extend({
 });
 
 
-module.exports.user = User;
-module.exports.users = Users;
+module.exports.user =  Bookshelf.model('User', User);
+module.exports.users = Bookshelf.collection('Users', Users);
 
 
 
@@ -29,7 +29,7 @@ module.exports.validPassword = function(password, userPassword) {
 };
 
 
-
+/*
 module.exports.findById = function(id, cb) {
     User.forge({id: id})
         .fetch()
@@ -49,3 +49,4 @@ module.exports.findById = function(id, cb) {
         });
 };
 
+*/

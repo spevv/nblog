@@ -3,7 +3,11 @@ var express = require('express');
 var router = express.Router();
 var Post = require('../models/post').post;
 var Posts = require('../models/post').posts;
-
+var Category = require('../models/category').category;
+var Categories = require('../models/category').categories;
+var Tag = require('../models/tag').tags;
+var Tags = require('../models/tag').tag;
+var _ = require('lodash');
 
 
 function saveTags(tags) {
@@ -63,7 +67,7 @@ router.route('/posts/:id')
     // fetch a post by id
     .get(function (req, res) {
         Post.forge({id: req.params.id})
-            .fetch({withRelated: ['categories', 'tags']})
+            .fetch({withRelated: ['categories', 'tags', 'author' ]})
             .then(function (post) {
                 if (!post) {
                     res.status(404).json({error: true, data: {}});
@@ -73,6 +77,7 @@ router.route('/posts/:id')
                 }
             })
             .otherwise(function (err) {
+                console.log(err);
                 res.status(500).json({error: true, data: {message: err.message}});
             });
     });
@@ -151,9 +156,10 @@ router.route('/posts/tag/:slug')
         Tag.forge({slug: req.params.slug})
             .fetch({withRelated: ['posts']})
             .then(function (tag) {
-                var posts = tag.related('posts');
+               // console.log(tag);
+                //var posts = tag.related('posts');
 
-                res.json({error: false, data: posts.toJSON()});
+                res.json({error: false, data: tag.toJSON()});
             })
             .otherwise(function (err) {
                 res.status(500).json({error: true, data: {message: err.message}});

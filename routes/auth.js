@@ -1,10 +1,15 @@
 // app/routes.js
+
 module.exports = function(app, passport) {
+    var permission = require('../lib/permission')(app);
 
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
-    app.get('/', function(req, res) {
+
+    //user.can('access home page')
+    // permission.can('admin')
+    app.get('/', permission.can('admin'), function(req, res) {
         //res.render('index', { title: 'Express' });
         res.render('auth/index'); // load the index.ejs file
     });
